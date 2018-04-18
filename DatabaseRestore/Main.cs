@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.ServiceProcess;
 using Microsoft.Win32;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DatabaseRestore
 {
@@ -152,28 +154,8 @@ namespace DatabaseRestore
 
         private void btnMixedMode_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-                using (RegistryKey rk = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQLServer", true))
-                {
-                    rk.SetValue("LoginMode", 2);
-                }
-                RestartServices();
-            }
-            catch (Exception ex)
-            {
-                if (ex.GetType().ToString() == "System.Security.SecurityException")
-                {
-                    MessageBox.Show("Start programmet som administrator for å enable SA", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
-                    return;
-                }
-            }
+            new SQLLoginModeHelper().ChangeLoginMode(2);
+            RestartServices();
         }
 
         private void btnEnableSA_Click(object sender, EventArgs e)
@@ -299,3 +281,4 @@ namespace DatabaseRestore
         }
     }
 }
+

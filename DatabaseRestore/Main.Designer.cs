@@ -43,7 +43,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMixedMode = new System.Windows.Forms.Button();
             this.btnCheckLoginMode = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnEnableSA = new System.Windows.Forms.Button();
             this.btnSaPassord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,7 +95,7 @@
             // 
             this.btnImporter.Location = new System.Drawing.Point(12, 239);
             this.btnImporter.Name = "btnImporter";
-            this.btnImporter.Size = new System.Drawing.Size(75, 23);
+            this.btnImporter.Size = new System.Drawing.Size(75, 52);
             this.btnImporter.TabIndex = 6;
             this.btnImporter.Text = "Importer";
             this.btnImporter.UseVisualStyleBackColor = true;
@@ -132,7 +131,7 @@
             // 
             // btnMixedMode
             // 
-            this.btnMixedMode.Location = new System.Drawing.Point(211, 268);
+            this.btnMixedMode.Location = new System.Drawing.Point(213, 239);
             this.btnMixedMode.Name = "btnMixedMode";
             this.btnMixedMode.Size = new System.Drawing.Size(113, 23);
             this.btnMixedMode.TabIndex = 10;
@@ -150,22 +149,11 @@
             this.btnCheckLoginMode.UseVisualStyleBackColor = true;
             this.btnCheckLoginMode.Click += new System.EventHandler(this.btnCheckLoginMode_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(220, 244);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "KUN FOR 2017";
-            // 
             // btnEnableSA
             // 
-            this.btnEnableSA.Location = new System.Drawing.Point(11, 268);
+            this.btnEnableSA.Location = new System.Drawing.Point(93, 268);
             this.btnEnableSA.Name = "btnEnableSA";
-            this.btnEnableSA.Size = new System.Drawing.Size(76, 23);
+            this.btnEnableSA.Size = new System.Drawing.Size(114, 23);
             this.btnEnableSA.TabIndex = 13;
             this.btnEnableSA.Text = "Aktiver SA";
             this.btnEnableSA.UseVisualStyleBackColor = true;
@@ -173,7 +161,7 @@
             // 
             // btnSaPassord
             // 
-            this.btnSaPassord.Location = new System.Drawing.Point(93, 268);
+            this.btnSaPassord.Location = new System.Drawing.Point(212, 268);
             this.btnSaPassord.Name = "btnSaPassord";
             this.btnSaPassord.Size = new System.Drawing.Size(114, 23);
             this.btnSaPassord.TabIndex = 14;
@@ -189,7 +177,6 @@
             this.ClientSize = new System.Drawing.Size(338, 299);
             this.Controls.Add(this.btnSaPassord);
             this.Controls.Add(this.btnEnableSA);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCheckLoginMode);
             this.Controls.Add(this.btnMixedMode);
             this.Controls.Add(this.pictureBox1);
@@ -228,7 +215,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnMixedMode;
         private System.Windows.Forms.Button btnCheckLoginMode;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEnableSA;
         private System.Windows.Forms.Button btnSaPassord;
     }
