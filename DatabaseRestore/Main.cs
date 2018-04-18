@@ -89,7 +89,6 @@ namespace DatabaseRestore
                         cmd.ExecuteNonQuery();
                     }
                 }
-
             }
             catch (SqlException sqlEx)
             {
@@ -137,7 +136,6 @@ namespace DatabaseRestore
                 else
                     MessageBox.Show("SA er ikke aktivert, trykk på Enable SA knappen.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             catch (SqlException sqlEx)
             {
                 {
@@ -175,7 +173,6 @@ namespace DatabaseRestore
                     ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
                     return;
                 }
-
             }
         }
 
@@ -243,7 +240,6 @@ namespace DatabaseRestore
                         }
                     }
                 }
-
                 catch (SqlException sqlEx)
                 {
                     {
