@@ -154,7 +154,11 @@ namespace DatabaseRestore
 
         private void btnMixedMode_Click(object sender, EventArgs e)
         {
-            new SQLLoginModeHelper().ChangeLoginMode(2);
+            if (!new SQLLoginModeHelper().ChangeLoginMode(2))
+            {
+                ShowErrorMessage("Start programmet som administrator.");
+                return;
+            }     
             RestartServices();
         }
 

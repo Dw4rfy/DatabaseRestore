@@ -33,7 +33,7 @@ namespace DatabaseRestore
             return list;
         }
 
-        public void ChangeLoginMode(int loginMode)
+        public bool ChangeLoginMode(int loginMode)
         {
             foreach (var baseKey in GetBaseRegistryKeys())
             {
@@ -41,9 +41,17 @@ namespace DatabaseRestore
                 {
                     if (!keyName.Contains("MSSQL"))
                         continue;
-                    SetKeyValue(loginMode, keyName + @"\MSSQLServer", baseKey);
+                    try
+                    {
+                        SetKeyValue(loginMode, keyName + @"\MSSQLServer", baseKey);
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
+            return true;
         }
 
         private void SetKeyValue(int val, string path, RegistryKey baseKey)
