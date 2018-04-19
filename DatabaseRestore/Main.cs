@@ -182,7 +182,6 @@ namespace DatabaseRestore
                     }
                 }
             }
-
             catch (SqlException sqlEx)
             {
                 {
