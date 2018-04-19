@@ -65,6 +65,7 @@
             // 
             // btnChooseFile
             // 
+            this.btnChooseFile.Enabled = false;
             this.btnChooseFile.Location = new System.Drawing.Point(12, 194);
             this.btnChooseFile.Name = "btnChooseFile";
             this.btnChooseFile.Size = new System.Drawing.Size(24, 20);
@@ -93,6 +94,7 @@
             // 
             // btnImporter
             // 
+            this.btnImporter.Enabled = false;
             this.btnImporter.Location = new System.Drawing.Point(12, 239);
             this.btnImporter.Name = "btnImporter";
             this.btnImporter.Size = new System.Drawing.Size(75, 52);
@@ -131,6 +133,7 @@
             // 
             // btnMixedMode
             // 
+            this.btnMixedMode.Enabled = false;
             this.btnMixedMode.Location = new System.Drawing.Point(213, 239);
             this.btnMixedMode.Name = "btnMixedMode";
             this.btnMixedMode.Size = new System.Drawing.Size(113, 23);
@@ -141,6 +144,7 @@
             // 
             // btnCheckLoginMode
             // 
+            this.btnCheckLoginMode.Enabled = false;
             this.btnCheckLoginMode.Location = new System.Drawing.Point(93, 239);
             this.btnCheckLoginMode.Name = "btnCheckLoginMode";
             this.btnCheckLoginMode.Size = new System.Drawing.Size(114, 23);
@@ -151,6 +155,7 @@
             // 
             // btnEnableSA
             // 
+            this.btnEnableSA.Enabled = false;
             this.btnEnableSA.Location = new System.Drawing.Point(93, 268);
             this.btnEnableSA.Name = "btnEnableSA";
             this.btnEnableSA.Size = new System.Drawing.Size(114, 23);
@@ -161,6 +166,7 @@
             // 
             // btnSaPassord
             // 
+            this.btnSaPassord.Enabled = false;
             this.btnSaPassord.Location = new System.Drawing.Point(212, 268);
             this.btnSaPassord.Name = "btnSaPassord";
             this.btnSaPassord.Size = new System.Drawing.Size(114, 23);

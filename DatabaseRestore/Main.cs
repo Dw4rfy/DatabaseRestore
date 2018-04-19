@@ -34,11 +34,14 @@ namespace DatabaseRestore
 
                     cbInstanceNames.Items.Add(iName);
 
-                    if (InstanceExists())
+                    if (cbInstanceNames.Items.Count > 0)
                     {
                         cbInstanceNames.SelectedIndex = 0;
+                        ActivateButtons();
                         instanceName = cbInstanceNames.SelectedItem.ToString();
                     }
+                    else
+                        MessageBox.Show("Jeg klarer ikke hente inn SQL instanser. Er SQL blitt installert?");
                 }
             }
         }
@@ -128,12 +131,6 @@ namespace DatabaseRestore
 
         private void btnCheckLoginMode_Click(object sender, EventArgs e)
         {
-            if(!InstanceExists())
-            {
-                MessageBox.Show("Fant ingen instans, er SQL installert?");
-                return;
-            }
-
             try
             {
                 string LoginMode = null;
@@ -172,12 +169,6 @@ namespace DatabaseRestore
 
         private void btnEnableSA_Click(object sender, EventArgs e)
         {
-            if (!InstanceExists())
-            {
-                MessageBox.Show("Fant ingen instans, er SQL installert?");
-                return;
-            }
-
             try
             {
                 using (var con = CreateSqlConnection(instanceName, null))
@@ -208,12 +199,6 @@ namespace DatabaseRestore
 
         private void btnSaPassord_Click(object sender, EventArgs e)
         {
-            if (!InstanceExists())
-            {
-                MessageBox.Show("Fant ingen instans, er SQL installert?");
-                return;
-            }
-
             string password = "Velkommen1";
             var result = DialogResult.Cancel;
 
@@ -303,12 +288,15 @@ namespace DatabaseRestore
                 }
             }
         }
-        public bool InstanceExists()
-        {
-            if (cbInstanceNames.Items.Count != 0)
-                return true;
 
-            return false;
+        public void ActivateButtons()
+        {
+            btnCheckLoginMode.Enabled = true;
+            btnChooseFile.Enabled = true;
+            btnEnableSA.Enabled = true;
+            btnImporter.Enabled = true;
+            btnMixedMode.Enabled = true;
+            btnSaPassord.Enabled = true;
         }
     }
 }
