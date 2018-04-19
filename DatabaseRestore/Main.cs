@@ -278,12 +278,22 @@ namespace DatabaseRestore
             {
                 if (service.ServiceName.Contains("MSSQL$"))
                 {
-                    MessageBox.Show(string.Format("Restarter Service: {0}.", service.DisplayName), "Restarter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    service.Stop();
-                    service.WaitForStatus(ServiceControllerStatus.Stopped);
-                    service.Start();
-                    service.WaitForStatus(ServiceControllerStatus.Running);
-                    MessageBox.Show(string.Format("{0} er restartet.", service.DisplayName), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(service.Status == ServiceControllerStatus.Running)
+                    {
+                        MessageBox.Show(string.Format("Restarter Service: {0}.", service.DisplayName), "Restarter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        service.Stop();
+                        service.WaitForStatus(ServiceControllerStatus.Stopped);
+                        service.Start();
+                        service.WaitForStatus(ServiceControllerStatus.Running);
+                        MessageBox.Show(string.Format("{0} er restartet.", service.DisplayName), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        service.Start();
+                        service.WaitForStatus(ServiceControllerStatus.Running);
+                        MessageBox.Show(string.Format("{0} er startet.", service.DisplayName), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
                 }
             }
         }
