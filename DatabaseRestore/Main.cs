@@ -33,17 +33,17 @@ namespace DatabaseRestore
                     string iName = service.MachineName + "\\" + formattedString.Replace(")", "");
 
                     cbInstanceNames.Items.Add(iName);
-
-                    if (cbInstanceNames.Items.Count > 0)
-                    {
-                        cbInstanceNames.SelectedIndex = 0;
-                        ActivateButtons();
-                        instanceName = cbInstanceNames.SelectedItem.ToString();
-                    }
-                    else
-                        MessageBox.Show("Jeg klarer ikke hente inn SQL instanser. Er SQL blitt installert?");
                 }
             }
+
+            if (cbInstanceNames.Items.Count > 0)
+            {
+                cbInstanceNames.SelectedIndex = 0;
+                ActivateButtons();
+                instanceName = cbInstanceNames.SelectedItem.ToString();
+            }
+            else
+                MessageBox.Show("Jeg klarer ikke hente inn SQL instanser. Er SQL blitt installert?");
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
