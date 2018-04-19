@@ -34,7 +34,7 @@ namespace DatabaseRestore
 
                     cbInstanceNames.Items.Add(iName);
 
-                    if (cbInstanceNames.Items.Count != 0)
+                    if (InstanceExists())
                     {
                         cbInstanceNames.SelectedIndex = 0;
                         instanceName = cbInstanceNames.SelectedItem.ToString();
@@ -128,6 +128,12 @@ namespace DatabaseRestore
 
         private void btnCheckLoginMode_Click(object sender, EventArgs e)
         {
+            if(!InstanceExists())
+            {
+                MessageBox.Show("Fant ingen instans, er SQL installert?");
+                return;
+            }
+
             try
             {
                 string LoginMode = null;
@@ -166,6 +172,12 @@ namespace DatabaseRestore
 
         private void btnEnableSA_Click(object sender, EventArgs e)
         {
+            if (!InstanceExists())
+            {
+                MessageBox.Show("Fant ingen instans, er SQL installert?");
+                return;
+            }
+
             try
             {
                 using (var con = CreateSqlConnection(instanceName, null))
@@ -196,6 +208,12 @@ namespace DatabaseRestore
 
         private void btnSaPassord_Click(object sender, EventArgs e)
         {
+            if (!InstanceExists())
+            {
+                MessageBox.Show("Fant ingen instans, er SQL installert?");
+                return;
+            }
+
             string password = "Velkommen1";
             var result = DialogResult.Cancel;
 
@@ -284,6 +302,13 @@ namespace DatabaseRestore
                     MessageBox.Show(string.Format("{0} er restartet.", service.DisplayName), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+        public bool InstanceExists()
+        {
+            if (cbInstanceNames.Items.Count != 0)
+                return true;
+
+            return false;
         }
     }
 }
