@@ -35,10 +35,12 @@ namespace DatabaseRestore
                     cbInstanceNames.Items.Add(iName);
 
                     if (cbInstanceNames.Items.Count != 0)
+                    {
                         cbInstanceNames.SelectedIndex = 0;
+                        instanceName = cbInstanceNames.SelectedItem.ToString();
+                    }
                 }
             }
-            instanceName = cbInstanceNames.SelectedItem.ToString();
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
