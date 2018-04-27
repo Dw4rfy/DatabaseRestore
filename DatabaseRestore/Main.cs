@@ -103,7 +103,7 @@ namespace DatabaseRestore
                 }
                 else if (sqlEx.Message.Contains("Ingen tilgang"))
                 {
-                    ShowErrorMessage("Programmet klarer ikke å nå filen, legg database filen på C:\\");
+                    ShowErrorMessage("Programmet klarer ikke å nå filen, legg database filen på C:\\ rot");
                     return;
                 }
                 else if (sqlEx.Message.Contains("running version 13.00.4001"))
@@ -122,7 +122,31 @@ namespace DatabaseRestore
                 ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
                 return;
             }
-            MessageBox.Show("Database importert", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            string LoginMode = null;
+            string LoginModeResult = null;
+
+            using (var con = CreateSqlConnection(instanceName, null))
+            {
+                LoginMode = SqlHelper.CheckSqlLoginMode(con);
+            }
+            if (LoginMode == "Mixed")
+                LoginModeResult = " Mixed mode er aktivert.";
+            else
+                LoginModeResult = " Mixed mode er ikke aktivert trykk på 'Bytt til mixed mode' knappen.";
+
+            string SaStatus = null;
+
+            using (var con = CreateSqlConnection(instanceName, null))
+            {
+                if (SqlHelper.IsSAEnabled(con))
+                    SaStatus = " SA konto er aktivert.";
+                else
+                    SaStatus = " SA konto er deaktivert, trykk på aktiver SA.";
+            }
+
+            MessageBox.Show(string.Format("Database importert.{0}{1}", LoginModeResult, SaStatus), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             ResetToStart();
         }
 
@@ -136,9 +160,9 @@ namespace DatabaseRestore
                     LoginMode = SqlHelper.CheckSqlLoginMode(con);
                 }
                 if (LoginMode == "Mixed")
-                    MessageBox.Show("SA er aktivert, du kan fint logge på med denne", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("SA(Mixed mode) er aktivert, du kan fint logge på med denne", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("SA er ikke aktivert, trykk på Enable SA knappen.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("SA(Mixed mode) er ikke aktivert, trykk på Enable SA knappen.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException sqlEx)
             {
@@ -177,6 +201,10 @@ namespace DatabaseRestore
                         cmd.CommandTimeout = 0;
                         cmd.ExecuteNonQuery();
                     }
+                    if (SqlHelper.IsSAEnabled(con))
+                        MessageBox.Show("SA konto er nå enablet.");
+                    else
+                        ShowErrorMessage("SA konto er fortsatt ikke enablet, gikk noe galt?");
                 }
             }
 

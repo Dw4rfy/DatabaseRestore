@@ -55,6 +55,23 @@ namespace DatabaseRestore
             return false;
         }
 
+        public static bool IsSAEnabled(SqlConnection con)
+        {
+            using (var cmd = con.CreateCommand())
+            {
+                cmd.CommandText = @"SELECT name, is_disabled FROM sys.server_principals where name = 'SA'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.GetBoolean(reader.GetOrdinal("is_disabled")) == false)
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public static string FindDataFolderPath(SqlConnection con)
         {
             var sql = "select InstanceDefaultDataPath = serverproperty('InstanceDefaultDataPath')";
