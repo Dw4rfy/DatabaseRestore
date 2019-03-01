@@ -31,7 +31,6 @@ namespace DatabaseRestore
                     string tmpString = service.DisplayName;
                     string formattedString = tmpString.Remove(0, 12);
                     string iName = service.MachineName + "\\" + formattedString.Replace(")", "");
-
                     cbInstanceNames.Items.Add(iName);
                 }
             }
@@ -43,7 +42,9 @@ namespace DatabaseRestore
                 instanceName = cbInstanceNames.SelectedItem.ToString();
             }
             else
+            {
                 MessageBox.Show("Jeg klarer ikke hente inn SQL instanser. Er SQL blitt installert?");
+            }
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)
@@ -167,7 +168,6 @@ namespace DatabaseRestore
                 RestartServices();
             else
                 ShowErrorMessage("Start programmet som administrator.");
-
         }
 
         private void btnEnableSA_Click(object sender, EventArgs e)
@@ -186,7 +186,7 @@ namespace DatabaseRestore
                     if (SqlHelper.IsSAEnabled(con))
                         MessageBox.Show("SA konto er nå enablet.");
                     else
-                        ShowErrorMessage("SA konto er fortsatt ikke enablet, gikk noe galt?");
+                        ShowErrorMessage("SA konto er fortsatt ikke enablet");
                 }
             }
             catch (Exception ex)
@@ -209,7 +209,9 @@ namespace DatabaseRestore
                     MessageBox.Show("Passord satt");
                 }
                 else if (result == DialogResult.Abort)
+                {
                     MessageBox.Show("Passord er satt til: Velkommen1");
+                }
             }
 
             if (result != DialogResult.Cancel)
