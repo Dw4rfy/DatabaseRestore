@@ -138,7 +138,6 @@ namespace DatabaseRestore
             }
 
             MessageBox.Show(string.Format("Database importert.{0}{1}", LoginModeResult, SaStatus), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             ResetToStart();
         }
 
@@ -156,10 +155,6 @@ namespace DatabaseRestore
                 else
                     MessageBox.Show("SA(Mixed mode) er ikke aktivert, trykk på Enable SA knappen.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException sqlEx)
-            {
-                ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
-            }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
@@ -168,12 +163,11 @@ namespace DatabaseRestore
 
         private void btnMixedMode_Click(object sender, EventArgs e)
         {
-            if (!new SQLLoginModeHelper().ChangeLoginMode(2))
-            {
+            if (new SQLLoginModeHelper().ChangeLoginMode(2))
+                RestartServices();
+            else
                 ShowErrorMessage("Start programmet som administrator.");
-                return;
-            }
-            RestartServices();
+
         }
 
         private void btnEnableSA_Click(object sender, EventArgs e)
@@ -194,10 +188,6 @@ namespace DatabaseRestore
                     else
                         ShowErrorMessage("SA konto er fortsatt ikke enablet, gikk noe galt?");
                 }
-            }
-            catch (SqlException sqlEx)
-            {
-                ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
             }
             catch (Exception ex)
             {
@@ -236,10 +226,6 @@ namespace DatabaseRestore
                             cmd.ExecuteNonQuery();
                         }
                     }
-                }
-                catch (SqlException sqlEx)
-                {
-                    ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
                 }
                 catch (Exception ex)
                 {

@@ -61,8 +61,10 @@ namespace DatabaseRestore
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
+                    {
                         if (reader.GetBoolean(reader.GetOrdinal("is_disabled")) == false)
                             return true;
+                    }
                 }
             }
             return false;
