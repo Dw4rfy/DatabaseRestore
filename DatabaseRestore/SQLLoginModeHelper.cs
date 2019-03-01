@@ -29,7 +29,6 @@ namespace DatabaseRestore
             key = GetKey(RegistryView.Registry32);
             if (key != null)
                 list.Add(key);
-
             return list;
         }
 
@@ -59,7 +58,6 @@ namespace DatabaseRestore
             var key = baseKey.OpenSubKey(path, true);
             if (key == null)
                 return;
-
             key.SetValue("LoginMode", val);
         }
     }

@@ -40,24 +40,22 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cbInstanceNames = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMixedMode = new System.Windows.Forms.Button();
             this.btnCheckLoginMode = new System.Windows.Forms.Button();
             this.btnEnableSA = new System.Windows.Forms.Button();
             this.btnSaPassord = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbRestoreAs
             // 
-            this.tbRestoreAs.Location = new System.Drawing.Point(11, 101);
+            this.tbRestoreAs.Location = new System.Drawing.Point(15, 25);
             this.tbRestoreAs.Name = "tbRestoreAs";
             this.tbRestoreAs.Size = new System.Drawing.Size(315, 20);
             this.tbRestoreAs.TabIndex = 1;
             // 
             // tbBackupFile
             // 
-            this.tbBackupFile.Location = new System.Drawing.Point(42, 194);
+            this.tbBackupFile.Location = new System.Drawing.Point(46, 118);
             this.tbBackupFile.Name = "tbBackupFile";
             this.tbBackupFile.ReadOnly = true;
             this.tbBackupFile.Size = new System.Drawing.Size(284, 20);
@@ -66,7 +64,7 @@
             // btnChooseFile
             // 
             this.btnChooseFile.Enabled = false;
-            this.btnChooseFile.Location = new System.Drawing.Point(12, 194);
+            this.btnChooseFile.Location = new System.Drawing.Point(16, 118);
             this.btnChooseFile.Name = "btnChooseFile";
             this.btnChooseFile.Size = new System.Drawing.Size(24, 20);
             this.btnChooseFile.TabIndex = 4;
@@ -77,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 85);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(171, 13);
             this.label1.TabIndex = 4;
@@ -86,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 178);
+            this.label2.Location = new System.Drawing.Point(12, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 5;
@@ -95,7 +93,7 @@
             // btnImporter
             // 
             this.btnImporter.Enabled = false;
-            this.btnImporter.Location = new System.Drawing.Point(12, 239);
+            this.btnImporter.Location = new System.Drawing.Point(16, 163);
             this.btnImporter.Name = "btnImporter";
             this.btnImporter.Size = new System.Drawing.Size(75, 52);
             this.btnImporter.TabIndex = 6;
@@ -107,7 +105,7 @@
             // 
             this.cbInstanceNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInstanceNames.FormattingEnabled = true;
-            this.cbInstanceNames.Location = new System.Drawing.Point(11, 146);
+            this.cbInstanceNames.Location = new System.Drawing.Point(15, 70);
             this.cbInstanceNames.Name = "cbInstanceNames";
             this.cbInstanceNames.Size = new System.Drawing.Size(315, 21);
             this.cbInstanceNames.TabIndex = 7;
@@ -115,26 +113,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 130);
+            this.label3.Location = new System.Drawing.Point(12, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Instans";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(63, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(212, 59);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnMixedMode
             // 
             this.btnMixedMode.Enabled = false;
-            this.btnMixedMode.Location = new System.Drawing.Point(213, 239);
+            this.btnMixedMode.Location = new System.Drawing.Point(217, 163);
             this.btnMixedMode.Name = "btnMixedMode";
             this.btnMixedMode.Size = new System.Drawing.Size(113, 23);
             this.btnMixedMode.TabIndex = 10;
@@ -145,7 +133,7 @@
             // btnCheckLoginMode
             // 
             this.btnCheckLoginMode.Enabled = false;
-            this.btnCheckLoginMode.Location = new System.Drawing.Point(93, 239);
+            this.btnCheckLoginMode.Location = new System.Drawing.Point(97, 163);
             this.btnCheckLoginMode.Name = "btnCheckLoginMode";
             this.btnCheckLoginMode.Size = new System.Drawing.Size(114, 23);
             this.btnCheckLoginMode.TabIndex = 11;
@@ -156,7 +144,7 @@
             // btnEnableSA
             // 
             this.btnEnableSA.Enabled = false;
-            this.btnEnableSA.Location = new System.Drawing.Point(93, 268);
+            this.btnEnableSA.Location = new System.Drawing.Point(97, 192);
             this.btnEnableSA.Name = "btnEnableSA";
             this.btnEnableSA.Size = new System.Drawing.Size(114, 23);
             this.btnEnableSA.TabIndex = 13;
@@ -167,7 +155,7 @@
             // btnSaPassord
             // 
             this.btnSaPassord.Enabled = false;
-            this.btnSaPassord.Location = new System.Drawing.Point(212, 268);
+            this.btnSaPassord.Location = new System.Drawing.Point(216, 192);
             this.btnSaPassord.Name = "btnSaPassord";
             this.btnSaPassord.Size = new System.Drawing.Size(114, 23);
             this.btnSaPassord.TabIndex = 14;
@@ -180,12 +168,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(338, 299);
+            this.ClientSize = new System.Drawing.Size(338, 221);
             this.Controls.Add(this.btnSaPassord);
             this.Controls.Add(this.btnEnableSA);
             this.Controls.Add(this.btnCheckLoginMode);
             this.Controls.Add(this.btnMixedMode);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbInstanceNames);
             this.Controls.Add(this.btnImporter);
@@ -201,7 +188,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DBRestore";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,7 +204,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cbInstanceNames;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnMixedMode;
         private System.Windows.Forms.Button btnCheckLoginMode;
         private System.Windows.Forms.Button btnEnableSA;

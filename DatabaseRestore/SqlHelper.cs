@@ -46,9 +46,7 @@ namespace DatabaseRestore
                     while (reader.Read())
                     {
                         if (reader.GetString(reader.GetOrdinal("name")) == restoreName)
-                        {
                             return true;
-                        }
                     }
                 }
             }
@@ -63,10 +61,8 @@ namespace DatabaseRestore
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
                         if (reader.GetBoolean(reader.GetOrdinal("is_disabled")) == false)
                             return true;
-                    }
                 }
             }
             return false;
@@ -82,13 +78,12 @@ namespace DatabaseRestore
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
                         dataFolderPath = reader.GetString(reader.GetOrdinal("InstanceDefaultDataPath"));
-                    }
                 }
             }
             return dataFolderPath;
         }
+
         public static string CheckSqlLoginMode(SqlConnection con)
         {
             var sql = "EXEC master.sys.xp_loginconfig 'login mode'";
@@ -99,9 +94,7 @@ namespace DatabaseRestore
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
                         sqlLoginMode = reader.GetString(reader.GetOrdinal("config_value"));
-                    }
                 }
             }
             return sqlLoginMode;

@@ -100,25 +100,14 @@ namespace DatabaseRestore
             catch (SqlException sqlEx)
             {
                 if (sqlEx.Message.Contains("It is being used by"))
-                {
                     ShowErrorMessage("Data filer med det samme navnet er allerede i bruk av en annen database. \n\n Er databasen allerede importert?");
-                    return;
-                }
                 else if (sqlEx.Message.Contains("Ingen tilgang"))
-                {
                     ShowErrorMessage("Programmet klarer ikke å nå filen, legg database filen på C:\\ rot");
-                    return;
-                }
                 else if (sqlEx.Message.Contains("running version 13.00.4001"))
-                {
                     ShowErrorMessage("Det ser ut som denne bak filen er laget på SQL versjon 2016, oppgrader til siste versjon av SQL express.");
-                    return;
-                }
                 else
-                {
                     ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
-                    return;
-                }
+                return;
             }
             catch (Exception ex)
             {
@@ -169,15 +158,11 @@ namespace DatabaseRestore
             }
             catch (SqlException sqlEx)
             {
-                {
-                    ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
-                    return;
-                }
+                ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
-                return;
             }
         }
 
@@ -187,7 +172,7 @@ namespace DatabaseRestore
             {
                 ShowErrorMessage("Start programmet som administrator.");
                 return;
-            }     
+            }
             RestartServices();
         }
 
@@ -212,15 +197,11 @@ namespace DatabaseRestore
             }
             catch (SqlException sqlEx)
             {
-                {
-                    ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
-                    return;
-                }
+                ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
-                return;
             }
         }
 
@@ -238,9 +219,7 @@ namespace DatabaseRestore
                     MessageBox.Show("Passord satt");
                 }
                 else if (result == DialogResult.Abort)
-                {
                     MessageBox.Show("Passord er satt til: Velkommen1");
-                }
             }
 
             if (result != DialogResult.Cancel)
@@ -260,15 +239,11 @@ namespace DatabaseRestore
                 }
                 catch (SqlException sqlEx)
                 {
-                    {
-                        ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
-                        return;
-                    }
+                    ShowErrorMessage(sqlEx.Message + Environment.NewLine + Environment.NewLine + sqlEx.StackTrace);
                 }
                 catch (Exception ex)
                 {
                     ShowErrorMessage(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
-                    return;
                 }
             }
         }
@@ -306,7 +281,7 @@ namespace DatabaseRestore
             {
                 if (service.ServiceName.Contains("MSSQL$"))
                 {
-                    if(service.Status == ServiceControllerStatus.Running)
+                    if (service.Status == ServiceControllerStatus.Running)
                     {
                         MessageBox.Show(string.Format("Restarter Service: {0}.", service.DisplayName), "Restarter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         service.Stop();
@@ -321,7 +296,6 @@ namespace DatabaseRestore
                         service.WaitForStatus(ServiceControllerStatus.Running);
                         MessageBox.Show(string.Format("{0} er startet.", service.DisplayName), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    
                 }
             }
         }
