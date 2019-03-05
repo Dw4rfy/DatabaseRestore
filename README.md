@@ -7,3 +7,4 @@ The program will you a feedback if the import was successfull or if you need to 
 
 Made in C# .net with WinForms for the GUI
 
+![Application screenshot](docs\img\dbrestore.PNG)
